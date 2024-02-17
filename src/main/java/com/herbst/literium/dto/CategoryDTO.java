@@ -14,11 +14,11 @@ import lombok.Setter;
 public class CategoryDTO {
 
     private Long id;
-    @NotBlank(message = "Campo não pode ser vazio")
+    @NotBlank(message = "Name não pode ser vázio")
     private String name;
 
-    public CategoryDTO(Category entite){
-        this.id = entite.getId();
-        this.name = entite.getName();
+    public CategoryDTO(Category entity){
+        this.id = entity.getId();
+        this.name = entity.getName();
     }
 }

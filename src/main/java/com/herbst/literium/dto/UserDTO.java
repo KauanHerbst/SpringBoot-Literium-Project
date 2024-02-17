@@ -17,8 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 public class UserDTO {
     private Long id;
-    @NotBlank(message = "Campo não pode ser vazio")
+    @NotBlank(message = "Campo não pode ser vázio")
     private String name;
+    @NotBlank(message = "Email não pode ser vázio")
     @Email(message = "Precisa ser um email valido")
     private String email;
     private List<RoleDTO> roles = new ArrayList<>();

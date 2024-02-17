@@ -23,6 +23,7 @@ public class Order implements Serializable {
     @JoinColumn(name = "book_id")
     private Book book;
     private Integer amount;
+    private Double price;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")

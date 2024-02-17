@@ -5,6 +5,7 @@ import com.herbst.literium.dto.CategoryDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;

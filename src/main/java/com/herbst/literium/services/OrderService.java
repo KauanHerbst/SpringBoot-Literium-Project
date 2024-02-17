@@ -36,6 +36,7 @@ public class OrderService {
         return orders.map(order -> new OrderResponseDTO(order));
     }
 
+
     public OrderResponseDTO insertByUserId(Long userId, Long bookId, OrderAmountDTO orderAmountDTO){
         User user = verifyUserId(userId);
         Book book = verifyBookId(bookId);
@@ -45,14 +46,17 @@ public class OrderService {
         order.setUser(user);
         order.setBook(book);
         order.setAmount(orderAmountDTO.getAmount());
+        order.setPrice(orderAmountDTO.getAmount() * book.getPrice());
         orderRepository.save(order);
         return new OrderResponseDTO(order);
     }
 
     public void updateOrder(Long bookId, Long userId, OrderAmountDTO orderAmountDTO){
-       Order order = orderRepository.findByUserIdAndBookId(userId, bookId);
+        Order order = orderRepository.findByUserIdAndBookId(userId, bookId);
+        Book book = verifyBookId(bookId);
         if(order == null) throw new EntityIdNotFoundException(bookId);
         order.setAmount(orderAmountDTO.getAmount());
+        order.setPrice(orderAmountDTO.getAmount() * book.getPrice());
         orderRepository.save(order);
     }
 
@@ -69,7 +73,8 @@ public class OrderService {
     }
 
     private Book verifyBookId(Long bookId){
-        Book book = bookRepository.getReferenceById(bookId);
+        Optional<Book> optionalBookbook = bookRepository.findById(bookId);
+        Book book = optionalBookbook.get();
         if(!(book != null)) throw new EntityIdNotFoundException(bookId);
         return book;
     }

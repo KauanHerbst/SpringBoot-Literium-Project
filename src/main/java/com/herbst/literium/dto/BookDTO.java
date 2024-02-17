@@ -18,15 +18,17 @@ import java.util.List;
 @NoArgsConstructor
 public class BookDTO {
     private Long id;
-    @NotBlank(message = "Campo não pode ser vazio")
+    @NotBlank(message = "Name não pode ser vázio")
     private String name;
-    @NotBlank(message = "Campo não pode ser vazio")
+    @NotBlank(message = "Description não pode ser vázio")
     private String description;
+    @NotBlank(message = "Year não pode ser vázio")
     private String year;
-    @NotBlank(message = "Campo não pode ser vazio")
+    @NotBlank(message = "Author não pode ser vázio")
     private String author;
     @Positive(message = "Preço não pode ser negatvo")
     private Double price;
+    @NotBlank(message = "Image Url não pode ser vázio")
     private String imageUrl;
     private List<CategoryDTO> categories = new ArrayList<>();
 

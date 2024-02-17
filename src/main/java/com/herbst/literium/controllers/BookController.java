@@ -2,6 +2,7 @@ package com.herbst.literium.controllers;
 
 import com.herbst.literium.dto.BookDTO;
 import com.herbst.literium.services.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +18,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
     @PostMapping
-    public ResponseEntity<BookDTO> store(@RequestBody BookDTO entity){
+    public ResponseEntity<BookDTO> store(@Valid @RequestBody BookDTO entity){
         entity = bookService.store(entity);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(entity.getId()).toUri();
         return ResponseEntity.created(uri).body(entity);
@@ -40,7 +41,7 @@ public class BookController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<BookDTO> update(@PathVariable Long id, @RequestBody BookDTO entity){
+    public ResponseEntity<BookDTO> update(@PathVariable Long id,@Valid @RequestBody BookDTO entity){
         return ResponseEntity.ok(bookService.update(id, entity));
     }
 

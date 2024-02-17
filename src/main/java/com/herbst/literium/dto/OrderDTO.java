@@ -14,7 +14,6 @@ public class OrderDTO {
     private Long id;
     private User user;
     private Book book;
-
     public OrderDTO(Order order){
         this.id = order.getId();
         this.user = order.getUser();
