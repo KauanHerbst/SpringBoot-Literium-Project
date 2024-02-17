@@ -44,7 +44,7 @@ public class SecurityConfig {
                             .requestMatchers(HttpMethod.GET, "/books**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/books/{id}").permitAll()
                             .requestMatchers(HttpMethod.GET, "/books/name/{name}").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+                            .requestMatchers(HttpMethod.POST, "/users").permitAll()
                             .requestMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.PUT, "/users").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.GET, "/users").permitAll()
