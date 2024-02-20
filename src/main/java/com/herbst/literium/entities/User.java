@@ -1,5 +1,6 @@
 package com.herbst.literium.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.herbst.literium.dto.UserInsertDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,9 +35,11 @@ public class User implements UserDetails, Serializable {
     private List<Role> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Favorite> favorites = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Order> orders = new ArrayList<>();
 
     public User(UserInsertDTO entity){
@@ -45,8 +48,6 @@ public class User implements UserDetails, Serializable {
         this.email = entity.getEmail();
         this.password = entity.getPassword();
         entity.getRoles().forEach(roleDTO -> this.roles.add(new Role(roleDTO)));
-        entity.getFavorites().forEach(favoriteDTO -> this.favorites.add(new Favorite(favoriteDTO)));
-        entity.getFavorites().forEach(favoriteDTO -> this.favorites.add(new Favorite(favoriteDTO)));
     }
 
     @Override

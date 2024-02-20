@@ -1,5 +1,6 @@
 package com.herbst.literium.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.herbst.literium.dto.FavoriteDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,9 +21,11 @@ public class Favorite implements Serializable {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonBackReference
     private Book book;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
