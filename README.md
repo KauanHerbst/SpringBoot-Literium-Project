@@ -213,7 +213,7 @@ Lista de principais rotas e seus corpos de requisição esperados (request bodie
 	"content": [
 		{
 			"id": 1,
-			"name": ""Literium",",
+			"name": "Literium",
 			"email": "literium@literium.com",
 			"roles": [
 				{
